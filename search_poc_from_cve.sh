@@ -1,6 +1,6 @@
 #!/bin/bash
 set -u
-
+trap 'echo "[$BASH_SOURCE:$LINENO]: " $BASH_COMMAND " returns not zero status"' ERR
 This=$(basename $0)
 
 if [[ ! $# == 1 ]]; then
@@ -13,6 +13,7 @@ fi
 CVE_LIST=$1
 cnt=$(cat $CVE_LIST|wc -l)
 TEMP=$(mktemp)
+trap "echo '[+] The process is finished...'; rm ${TEMP};  exit;" EXIT
 
 echo Search for $cnt.
 
@@ -33,4 +34,5 @@ do
 done
 
 uniq ${TEMP} > result/cve_poc.list
-rm ${TEMP}
+
+
