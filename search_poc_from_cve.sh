@@ -3,7 +3,7 @@ set -u
 trap 'echo "[$BASH_SOURCE:$LINENO]: " $BASH_COMMAND " returns not zero status"' ERR
 This=$(basename $0)
 
-if [[ ! $# -ge 1 ]]; then
+if [[ $# -eq 0 ]]; then
 echo """ Usage:
   $This <cve list file> | <cve number1> <cve number2>...
   """
