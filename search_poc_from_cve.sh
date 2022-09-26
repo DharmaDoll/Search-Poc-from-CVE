@@ -40,6 +40,6 @@ do
   done
 done
 
-uniq ${TEMP} > result/cve_poc.list
+sort ${TEMP} | uniq > result/cve_poc.list
 
 
