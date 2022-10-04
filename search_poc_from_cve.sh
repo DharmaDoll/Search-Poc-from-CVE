@@ -1,5 +1,8 @@
 #!/bin/bash
 set -u
+
+cd `dirname $0`
+
 trap 'echo "[$BASH_SOURCE:$LINENO]: " $BASH_COMMAND " returns not zero status"' ERR
 This=$(basename $0)
 
